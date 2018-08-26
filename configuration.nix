@@ -120,6 +120,18 @@
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
+  # Set environment variables that will work in all shells
+  environment.interactiveShellInit = ''
+	export XDG_CONFIG_HOME="$HOME/.config"
+	export QT_QPA_CONFIG_HOME="qt5ct"
+	BASE16_SHELL="$HOME/.config/base16-shell/"
+	[ -n "$PS1" ] && \
+		[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+			eval "$("$BASE16_SHELL/profile_helper.sh")"
+	export EDITOR=vim
+	export VISUAL=vim
+	export BROWSER=qutebrowser
+ 	'';		
 
   # List services that you want to enable:
 
